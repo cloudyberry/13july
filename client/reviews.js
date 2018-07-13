@@ -12,12 +12,22 @@ Template.reviews.helpers({
 		return reviews;
 	},
 	nonAdmin: function() {
-			var adminId = Meteor.users.findOne({email: 'e0201623@u.nus.edu'})._id;
-			var userId = Meteor.userId();
-			if (userId !== adminId) {
-			return true;
-			}
+		var adminId = Meteor.users.findOne({"emails.address": "e0201623@u.nus.edu"})._id;
+		var userId = Meteor.userId();
+		if (userId !== adminId) {
+		return true;
+	}
+			// if (Session.get('name')!= 'Shi Kai Ning') {
+			// 		 return true;
+			// 	 }
 		},
+		admin: function() {
+	var adminId = Meteor.users.findOne({"emails.address": "e0201623@u.nus.edu"})._id;
+	var userId = Meteor.userId();
+	if (userId === adminId) {
+	return true;
+}
+},
 
 		comms: function() {
       var comms = Comments.find({}, {sort: {createdAt: -1}});

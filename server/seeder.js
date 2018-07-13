@@ -10,7 +10,7 @@ Meteor.startup(function() {
       Accounts.createUser({
         username: 'Shi Kai Ning',
         email: 'e0201623@u.nus.edu',
-        password: 'lalala',
+        password: 'idc',
 
         profile: {
         	likeScore: 3,

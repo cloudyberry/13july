@@ -13,6 +13,34 @@ Tracker.autorun(function(){
 });
 
 Template.hello.onRendered( () => {
+  Accounts.createUser({
+    email: (Router.current().params.query["openid.ax.value.contact_email"]),
+    password:'idc',
+
+    profile: {
+      likeScore: 0,
+      dislikeScore:0,
+      year: '1',
+      school: 'Computing',
+    }
+
+  }
+  , function(error) {console.log(error);} );
+
+  var email = (Router.current().params.query["openid.ax.value.contact_email"]);
+  var password ='idc';
+
+  Meteor.loginWithPassword(email, password, function(err){
+      if(err) {
+        Bert.alert(err.reason, "danger", "growl-top-right");
+        return false;
+      } else {
+
+        Router.go("/reviews");
+        Bert.alert("You are now logged in", "success", "growl-top-right");
+      }
+    });
+
 Session.set('name', (Router.current().params.query["openid.ax.value.fullname"])),
 console.log(Session.get('name'));
 console.log(Session.equals('name', (Router.current().params.query["openid.ax.value.fullname"])));
@@ -20,33 +48,6 @@ console.log(Router.current().params.query);
 console.log(Router.current().params.query["openid.identity"])
   // store identity in a session or persistant storage such as mongoDB?
   //Router.current().params.query["openid.identity"]
-   Accounts.createUser({
-     email: (Router.current().params.query["openid.ax.value.contact_email"]),
-     password:'idc',
-
-     profile: {
-       likeScore: 0,
-       dislikeScore:0,
-       year: '1',
-       school: 'Computing',
-     }
-
-   }
-   , function(error) {console.log(error);} );
-
-   var email = (Router.current().params.query["openid.ax.value.contact_email"]);
-   var password ='idc';
-
-   Meteor.loginWithPassword(email, password, function(err){
-       if(err) {
-         Bert.alert(err.reason, "danger", "growl-top-right");
-         return false;
-       } else {
-
-         Router.go("/reviews");
-         Bert.alert("You are now logged in", "success", "growl-top-right");
-       }
-     });
 
 
   });

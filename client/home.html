@@ -1,7 +1,7 @@
 <!--Changed format of post-->
 <!--need to add more stuff-->
 <template name="reviews">
-{{#if currentUser}}
+{{#if nonAdmin}}
 	{{> reviewForm}}
 
 	{{#each reviews}}
