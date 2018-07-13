@@ -12,13 +12,14 @@ Template.sidebar.events({
 				Bert.alert("you Are Now Logged Out", "success", "growl-top-right");
 			}
 		});
+		    Session.set('name', null);
 	},
 });
 
 Template.sidebar.helpers({
 
 	admin: function() {
-	  var adminId = Meteor.users.findOne({username: 'Admin'})._id;
+		var adminId = Meteor.users.findOne({email: 'e0201623@u.nus.edu'})._id;
 		var userId = Meteor.userId();
 	 	if (userId === adminId) {
 		return true;
@@ -26,7 +27,7 @@ Template.sidebar.helpers({
 
 },
 	nonAdmin: function() {
-			var adminId = Meteor.users.findOne({username: 'Admin'})._id;
+			var adminId = Meteor.users.findOne({email: 'e0201623@u.nus.edu'})._id;
 			var userId = Meteor.userId();
 			if (userId !== adminId) {
 			return true;
