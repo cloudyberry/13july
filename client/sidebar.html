@@ -1,0 +1,42 @@
+<template name="sidebar">
+	<aside class="sidebar-left">
+	<img src="m4.png" class="icon">
+	<a class="company-logo" href="/reviews">NUSModRev</a>
+		<div class="sidebar-links">
+
+
+			{{#if currentUser}}
+			<a class="link-red" href="/profile" id="profile-link"><i class="fa fa-user"></i>Profile</a>
+			{{else}}
+			<a class="link-blue" href="/reviews" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>
+			<a class="link-yellow" href="/rankings" id="rankings-link"><i class="fa fa-gittip" style="font-size:40px"></i>Featured</a><!--Change to featured posts-->
+			<a class="link-green" href="/search" id="search-link"><i class="fa fa-search" style="font-size:40px"></i>Search</a>
+			{{/if}}
+
+
+			{{#if currentUser}}
+			<a class="link-blue" href="/" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>
+			<a class="link-yellow" href="/" id="rankings-link"><i class="fa fa-gittip" style="font-size:40px"></i>Featured</a><!--Change to featured posts-->
+			<a class="link-green" href="/" id="search-link"><i class="fa fa-search" style="font-size:40px"></i>Search</a>
+		  {{/if}}
+
+		<!--	{{#if loggedOut}}
+			<a class="link-blue" href="/reviews" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>
+			<a class="link-yellow" href="/rankings" id="rankings-link"><i class="fa fa-gittip" style="font-size:40px"></i>Featured</a>
+			<a class="link-green" href="/search" id="search-link"><i class="fa fa-search" style="font-size:40px"></i>Search</a>
+			{{/if}}
+-->
+			{{#if admin}}
+			<a class="link-unapproved" href="/unapproved" id="unapproved-link"><i class="fa fa-columns"></i>unapproved</a>
+			<a class="link-approved" href="/approved" id="approved-link"><i class="fa fa-columns"></i>approved</a>
+			{{else}}
+			{{/if}}
+
+			{{#if currentUser}}
+			<a class="link-purple logout" href="#" id="logout-link"><i class="fa fa-sign-out" style="font-size:36px"></i>Logout</a>
+			{{else}}
+			<a class="link-pink" href="/" id="login-link"><i class="fa fa-sign-in"></i>Login</a>
+			{{/if}}
+		</div>
+	</aside>
+</template>
