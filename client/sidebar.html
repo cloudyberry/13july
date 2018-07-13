@@ -6,6 +6,7 @@
 
 
 			{{#if currentUser}}
+
 			<a class="link-red" href="/profile" id="profile-link"><i class="fa fa-user"></i>Profile</a>
 			{{else}}
 			<a class="link-blue" href="/reviews" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>
@@ -15,10 +16,10 @@
 
 
 			{{#if currentUser}}
-			<a class="link-blue" href="/" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>
-			<a class="link-yellow" href="/" id="rankings-link"><i class="fa fa-gittip" style="font-size:40px"></i>Featured</a><!--Change to featured posts-->
-			<a class="link-green" href="/" id="search-link"><i class="fa fa-search" style="font-size:40px"></i>Search</a>
-		  {{/if}}
+			<a class="link-blue" href="/reviews" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>
+			<a class="link-yellow" href="/rankings" id="rankings-link"><i class="fa fa-gittip" style="font-size:40px"></i>Featured</a><!--Change to featured posts-->
+			<a class="link-green" href="/search" id="search-link"><i class="fa fa-search" style="font-size:40px"></i>Search</a>
+			{{/if}}
 
 		<!--	{{#if loggedOut}}
 			<a class="link-blue" href="/reviews" id="reviews-link"><i class="fa fa-clock-o" style="font-size:40px"></i>Latest</a>

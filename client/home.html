@@ -1,7 +1,7 @@
 <!--Changed format of post-->
 <!--need to add more stuff-->
 <template name="reviews">
-{{#if loggedIn}}
+{{#if nonAdmin}}
 	{{> reviewForm}}
 
 	{{#each reviews}}
@@ -15,7 +15,7 @@
 				<p class="recommendation">Recommendation Level: {{recommendation}}</p>
 				<p class="diff">Difficulty Level: {{diff}}</p>
 				<p class="workload">Workload: {{workload}}</p>
-			  <p class="webcast">Availabilty of Webcast: {{webcast}}</p>
+								<p class="webcast">Availabilty of Webcast: {{webcast}}</p>
 				<p class="steepness">Steepness of Bellcurve: {{steepness}}</p>
 
 			</div>
@@ -39,7 +39,7 @@
 		<button type="button" class="btn btn-danger" id="like"><span class="glyphicon glyphicon-thumbs-up"></span> Likes ({{likeScore}})</button>
 		<button type="button" class="btn btn-warning" id="dislike"><span class="glyphicon glyphicon-thumbs-down"></span> Dislikes ({{dislikeScore}})</button>
 		<button type="button" class="btn btn-info" id="showcomment"><span class="glyphicon glyphicon-comment"></span> Comment</button>
-
+	<!-- End Joke -->
 	{{# if displayComments}}
 	{{> comments}}
 	{{else}}

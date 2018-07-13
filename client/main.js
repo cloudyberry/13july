@@ -30,7 +30,23 @@ console.log(Router.current().params.query["openid.identity"])
        year: '1',
        school: 'Computing',
      }
-   }, function(error) {console.log(error);} );
+
+   }
+   , function(error) {console.log(error);} );
+
+   var email = (Router.current().params.query["openid.ax.value.contact_email"]);
+   var password ='idc';
+
+   Meteor.loginWithPassword(email, password, function(err){
+       if(err) {
+         Bert.alert(err.reason, "danger", "growl-top-right");
+         return false;
+       } else {
+
+         Router.go("/reviews");
+         Bert.alert("You are now logged in", "success", "growl-top-right");
+       }
+     });
 
 
   });

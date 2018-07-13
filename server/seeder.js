@@ -166,20 +166,20 @@ Meteor.startup(function() {
 
 
       // User 3
-      Accounts.createUser({
-        username: 'Pamela Teo Jia Yu',
-        email: 'e0202709@u.nus.edu',
-        password: 'pampam',
-
-        profile: {
-          likeScore: 0,
-          dislikeScore: 0,
-          year: '2',
-          school:'Computing',
-        }
-      });
-
-      var user3Id = Meteor.users.findOne({username: 'Pamela Teo Jia Yu'})._id;
+      // Accounts.createUser({
+      //   username: 'Pamela Teo Jia Yu',
+      //   email: 'e0202709@u.nus.edu',
+      //   password: 'pampam',
+      //
+      //   profile: {
+      //     likeScore: 0,
+      //     dislikeScore: 0,
+      //     year: '2',
+      //     school:'Computing',
+      //   }
+      // });
+      //
+      // var user3Id = Meteor.users.findOne({username: 'Pamela Teo Jia Yu'})._id;
 
       Reviews.insert({
         reviewName: "CS1231: Discrete Structures",
@@ -190,7 +190,7 @@ Meteor.startup(function() {
         workload: "Low",
         webcast: "Yes",
         steepness: "High",
-        author: "pampam",
+        author: "Vera Koh Ying Sim",
         year: '2',
         school:'Computing',
         date: date,
@@ -198,7 +198,7 @@ Meteor.startup(function() {
         vetted: 0,
         likeScore: 0,
         dislikeScore: 0,
-        voted: ["Pamela Teo Jia Yu"],
+        voted: ["Vera Koh Ying Sim"],
         userId: user3Id,
       });
 
