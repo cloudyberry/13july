@@ -12,6 +12,7 @@ Template.reviews.helpers({
 		return reviews;
 	},
 	nonAdmin: function() {
+<<<<<<< HEAD
 		var adminId = Meteor.users.findOne({"emails.address": "e0201623@u.nus.edu"})._id;
 		var userId = Meteor.userId();
 		if (userId !== adminId) {
@@ -28,6 +29,14 @@ Template.reviews.helpers({
 	return true;
 }
 },
+=======
+			var adminId = Meteor.users.findOne({email: 'e0201623@u.nus.edu'})._id;
+			var userId = Meteor.userId();
+			if (userId !== adminId) {
+			return true;
+			}
+		},
+>>>>>>> f0ffd0602613ac44c009f35149235b9032f7ed73
 
 		comms: function() {
       var comms = Comments.find({}, {sort: {createdAt: -1}});

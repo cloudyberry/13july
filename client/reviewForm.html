@@ -1,5 +1,7 @@
 <template name="reviewForm">
-	{{#if nonAdmin}}
+
+	{{#if currentUser}}
+
 	<!-- Review Form-->
 	<div id="reviewForm-wrap">
 		<center>
@@ -139,7 +141,7 @@
 		<center>
 			<form class="review-post">
 				<h2 class="form-signin-heading">Log In To Post Reviews</h2>
-				<a href="/" class="btn btn-md btn-primary" id="login-redir">Login</a>
+				<a href="https://openid.nus.edu.sg/auth/?openid.ns=http://specs.openid.net/auth/2.0&openid.mode=checkid_setup&openid.return_to=http://localhost:3000&openid.realm=http://localhost:3000/&openid.ax_mode=fetch_request&openid.ns.ax=http://openid.net/srv/ax/1.0&openid.ns.sreg=http://openid.net/extensions/sreg/1.1&openid.identity=http://specs.openid.net/auth/2.0/identifier_select&openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&openid.ax.type.contact_email=http://axschema.org/contact/email&openid.ax.type.fullname=http://axschema.org/namePerson&openid.ax.type.user_id=%20http://axschemas.org/user/id&openid.ax.type.nickname=http://axschema.org/contact/nickname&openid.ax.required=contact_email,%20fullname&oopenid.sreg.required=email&oopenid.sreg.required=fullname&oopenid.sreg.required=nickname&controller=server&action=index&module=default" class="btn btn-md btn-primary" id="login-redir">Login</a>
 			</form>
 		</center>
 	</div>
