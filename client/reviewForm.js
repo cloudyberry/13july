@@ -41,16 +41,6 @@ Template.reviewForm.events({
 	}
 });
 
-Template.reviewForm.helpers({
-
-		loggedIn: function() {
-				var fullname = (Router.current().params.query["openid.ax.value.fullname"]);
-				if (fullname != null) {
-					return true;
-				}
-		}
-	});
-
 // Validation Rules
 
 var isNotEmpty = function(value){
