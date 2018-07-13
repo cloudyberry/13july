@@ -6,6 +6,12 @@ import { HTTP } from 'meteor/http'
 
 import './main.html';
 
+Tracker.autorun(function(){
+	if (Meteor.userId()) {
+		Router.go("/reviews");
+	}
+});
+
 Template.hello.onRendered( () => {
 Session.set('name', (Router.current().params.query["openid.ax.value.fullname"])),
 console.log(Session.get('name'));
@@ -14,17 +20,26 @@ console.log(Router.current().params.query);
 console.log(Router.current().params.query["openid.identity"])
   // store identity in a session or persistant storage such as mongoDB?
   //Router.current().params.query["openid.identity"]
-  Accounts.createUser({
-    email: (Router.current().params.query["openid.ax.value.contact_email"]),
-    password:'idc'
-  }, function(error) {console.log(error);} );
+   Accounts.createUser({
+     email: (Router.current().params.query["openid.ax.value.contact_email"]),
+     password:'idc',
+
+     profile: {
+       likeScore: 0,
+       dislikeScore:0,
+       year: '1',
+       school: 'Computing',
+     }
+   }, function(error) {console.log(error);} );
+
 
   });
 
 
 
 Template.hello.events({
-  'click button'(event, instance) {
+  "click #log-in": function() {
+  //'click button'(event, instance) {
 
 
     try {
@@ -67,6 +82,18 @@ Template.hello.events({
 
   },
 
+    "click #log-out": function() {
+      Meteor.logout(function(err){
+			if(err) {
+				Bert.alert(err.reason, "danger", "growl-top-right");
+			} else {
+				Router.go('/');
+				Bert.alert("you Are Now Logged Out", "success", "growl-top-right");
+			}
+		});
+    Session.set('name', null);
+    }
+
 });
 
 Template.test.helpers({
@@ -79,8 +106,25 @@ Template.test.helpers({
 	loggedIn: function() {
 		 //  var fullname = (Router.current().params.query["openid.ax.value.fullname"]);
 		//	  if (fullname != null) {
-		if (Session.get('name')!= null) {
-			  	return true;
+		 if (Session.get('name')!= null) {
+		 	  	return true;
+		//	return Session.equals('userId', (Router.current().params.query["openid.ax.value.fullname"]));
+			}
+		}
+
+});
+Template.hello.helpers({
+  testing: function() {
+  //var fullname = (Router.current().params.query["openid.ax.value.fullname"]);
+  //  return fullname;
+ return Session.get('name');
+  },
+
+	loggedIn: function() {
+		 //  var fullname = (Router.current().params.query["openid.ax.value.fullname"]);
+		//	  if (fullname != null) {
+		 if (Session.get('name')!= null) {
+		 	  	return true;
 		//	return Session.equals('userId', (Router.current().params.query["openid.ax.value.fullname"]));
 			}
 		}

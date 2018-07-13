@@ -26,6 +26,7 @@
 <template name="hello">
 	{{#if loggedIn}}
 	<h3 class="black">Welcome {{testing}}. You are logged in. return <a href="/reviews">home</a></h3>
+	<button class="btn btn-info" id="log-out" type="submit">Log out</button>
 	{{else}}
 	<div id="logging">
 	  <button class="btn btn-info" id="log-in" type="submit">Login NUS OPENID</button>
